@@ -52,7 +52,7 @@ const HeroSection = () => {
         <div className='text-center space-y-8'>
           <div className='max-w-screen-md mx-auto text-center text-4xl md:text-6xl font-bold'>
             <h1 style={{ direction: "rtl", fontSize: "11rem" }}>
-              "لا تقلق"
+              &quot;لا تقلق&quot;
             </h1>
             <br />
             <h2 style={{ direction: "rtl" }}>
@@ -75,7 +75,6 @@ const HeroSection = () => {
             >
               <ArrowLeft className="size-5 mr-2 group-hover/arrow:translate-x-1 transition-transform" />
               استشرنا الان
-
             </Button>
             <Button
               asChild
@@ -106,7 +105,6 @@ const HeroSection = () => {
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
               allowFullScreen
             ></iframe>
-
           </div>
         </div>
 
