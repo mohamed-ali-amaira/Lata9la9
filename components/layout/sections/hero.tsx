@@ -61,7 +61,7 @@ const HeroSection = () => {
           </div>
 
           <p
-            style={{ direction: "rtl" }}
+            style={{ direction: "rtl", fontSize: "1.8em" }}
             className='max-w-screen-sm mx-auto text-xl text-muted-foreground'
           >
             {`استشارة وحدة تخليك ترى كل شيء بالواضح`}
@@ -89,11 +89,12 @@ const HeroSection = () => {
         {/* Moved the paragraph inside the video container */}
         <div className='relative group mt-4'>
           <p
-            style={{ direction: "rtl", marginTop: "0.5rem" }}
+            style={{ direction: "rtl", fontSize: "1.8em", marginTop: "0.5rem" }}
             className='max-w-screen-sm mx-auto text-2xl text-center'
           >
             {`حضرنالك فيديو يفسرلك كل شي`}
           </p>
+
           <br />
           <div className='w-full md:w-[1200px] mx-auto rounded-lg relative rounded-lg leading-none flex flex-col items-center'>
             <iframe

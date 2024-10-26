@@ -10,58 +10,34 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-enum PopularPlan {
-  NO = 0,
-  YES = 1,
-}
 
 interface PlanProps {
   title: string;
-  popular: PopularPlan;
   price: number;
-  description: string;
-  buttonText: string;
   benefitList: string[];
 }
 
 const plans: PlanProps[] = [
   {
-    title: "ثمن تحرير العقد/اتفاق/عريضة.. ",
-    popular: PopularPlan.NO,
-    price: 59,
-    description: "",
-    buttonText: "استشرنا الان",
+    title: "ثمن تحرير العقد/اتفاق/عريضة ",
+    price: 300,
     benefitList: [
       "ابتداءا من 300 دينار",
       "عقد كامل المواصفات القانونية ",
-      " عقد خالي من أي ثغرة قانونية",
+      "عقد خالي من أي ثغرة قانونية",
       "يتم تحرير العقد في أجل 3 أيام ",
-      "  عقد حافظ لكل حقوقك بصفة دقي",
+      "عقد حافظ لكل حقوقك بصفة دقيقة",
     ],
   },
   {
-    title: "",
-    popular: PopularPlan.NO,
-    price: 79,
-    description: "",
-    buttonText: "استشرنا الان",
-    benefitList: [
-      "ملخص للاستشارة عند الطلب",
-      "استشارة عن بعد وين ما انت وفي الوقت الي تختارو",
-    ],
-  },
-  {
-    title: "",
-    popular: PopularPlan.NO,
-    price: 99,
-    description: "",
-    buttonText: "استشرنا الان",
+    title: "ثمن الاستشارة",
+    price: 59,
     benefitList: [
       "استشارة شاملة لكل استفساراتك",
-      "مدة المكالمة غير محددة ",
+      "مدة المكالمة غير محددة",
       "متابعة خاصة حتى بعد الاستشارة",
+      "ملخص للاستشارة عند الطلب",
+      "استشارة عن بعد وين ما انت وفي الوقت الي تختارو",
     ],
   },
 ];
@@ -72,30 +48,23 @@ const PricingSection = () => {
       <h2 className="text-3xl md:text-4xl text-center mb-4">التعريفة</h2>
       <h2 className="text-3xl md:text-4xl text-center mb-4">- -</h2>
 
-      {/* Price display section centered above the cards */}
-      <div className="text-center mb-8" style={{ scale: 1.45 }}>
-        <span className="text-3xl font-bold flex flex-col justify-center">
-          <del className="text-lg text-red-500">120 TND</del>
-          <span className="text-green-500">ابتداءا من 59 دينار</span>
-        </span>
-      </div>
-
-      {/* Displaying 3 cards with equal width */}
+      {/* Displaying 2 cards */}
       <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-        {plans.map(({ title, popular, description, benefitList }) => (
-          <Card
-            key={title}
-            className={`w-full lg:w-1/3 ${popular === PopularPlan.YES ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-primary lg:scale-[1.05]" : ""}`}
-          >
+        {plans.map(({ title, price, benefitList }) => (
+          <Card key={title} className="w-full lg:w-1/2 border border-gray-300 shadow-lg">
             <CardHeader>
-              <CardTitle className="pb-2 text-right">{title}</CardTitle>
-              <CardDescription className="pb-4 text-right">{description}</CardDescription>
+              <CardTitle className="pb-2 text-center">{title}</CardTitle>
             </CardHeader>
 
-            <CardContent dir="rtl" className="flex">
-              <div className="space-y-4">
+            <CardContent dir="rtl" className="flex flex-col items-center">
+              <span className="text-3xl font-bold text-green-500 mb-2">ابتداءا من {price} دينار</span>
+              {/* Conditionally render the del element only for the consultation card */}
+              {title === "ثمن الاستشارة" && (
+                <del className="text-lg text-red-500">120 TND</del>
+              )}
+              <div className="space-y-4 mt-4">
                 {benefitList.map((benefit) => (
-                  <span key={benefit} className="flex">
+                  <span key={benefit} className="flex items-center">
                     <Check className="text-primary ml-2" />
                     <h3>{benefit}</h3>
                   </span>

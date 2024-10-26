@@ -130,7 +130,7 @@ const reviewList: ReviewProps[] = [
 .`,
     rating: 4.8,
   },
-  
+
 ];
 
 const TestimonialSection2 = () => {
@@ -139,9 +139,10 @@ const TestimonialSection2 = () => {
       <div className='text-center'>
         <h2
           dir='rtl'
-          className='text-3xl md:text-4xl text-center font-bold mb-4'
+          className='text-6xl font-bold text-center mb-4'
         >
-سئلنا حرفائنا عن اراءهم       </h2>
+          سئلنا حرفائنا عن اراءهم
+        </h2>
       </div>
 
       <Carousel
@@ -157,7 +158,7 @@ const TestimonialSection2 = () => {
             <CarouselItem
               key={review.name}
               className='md:basis-1/2 lg:basis-1/3'
-              // dir={"rtl"}
+            // dir={"rtl"}
             >
               <Card className='bg-muted/50 dark:bg-card'>
                 <CardContent className='pt-6 pb-0'>
