@@ -94,7 +94,11 @@ const ContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>الإسم</FormLabel>
                         <FormControl>
-                          <Input placeholder="" {...field} />
+                          <Input 
+                            placeholder="" 
+                            {...field} 
+                            className="border border-gray-600 rounded-lg" // Darker border added here
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -107,7 +111,12 @@ const ContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>رقم الهاتف</FormLabel>
                         <FormControl>
-                          <Input type="number" placeholder="" {...field} />
+                          <Input 
+                            type="number" 
+                            placeholder="" 
+                            {...field} 
+                            className="border border-gray-600 rounded-lg" // Darker border added here
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -121,7 +130,7 @@ const ContactSection = () => {
                     name="adress"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>اكتب لنا وضعيتك القانونية</FormLabel>
+                        <FormLabel>احكيلنا لنا وضعيتك القانونية</FormLabel>
                         <FormControl>
                           <textarea
                             placeholder="اكتب هنا"
