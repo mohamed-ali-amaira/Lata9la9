@@ -4,6 +4,7 @@ import { Building2, Clock, Mail, Phone } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import {
   Form,
@@ -94,9 +95,9 @@ const ContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>الإسم</FormLabel>
                         <FormControl>
-                          <Input 
-                            placeholder="" 
-                            {...field} 
+                          <Input
+                            placeholder=""
+                            {...field}
                             className="border border-gray-600 rounded-lg" // Darker border added here
                           />
                         </FormControl>
@@ -111,10 +112,10 @@ const ContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>رقم الهاتف</FormLabel>
                         <FormControl>
-                          <Input 
-                            type="number" 
-                            placeholder="" 
-                            {...field} 
+                          <Input
+                            type="number"
+                            placeholder=""
+                            {...field}
                             className="border border-gray-600 rounded-lg" // Darker border added here
                           />
                         </FormControl>
@@ -130,7 +131,7 @@ const ContactSection = () => {
                     name="adress"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>احكيلنا لنا وضعيتك القانونية</FormLabel>
+                        <FormLabel>احكيلنا</FormLabel>
                         <FormControl>
                           <textarea
                             placeholder="اكتب هنا"
@@ -153,7 +154,8 @@ const ContactSection = () => {
                 <div dir="rtl" className="flex w-full ">
                   <div className="flex flex-1 flex-col items-start justify-start py-8 px-4">
                     <h2 className="text-2xl mb-4">شكرا على ثقتك بنا</h2>
-                    <h3 className="text-1xl mb-4">
+                    <h3 className="text-1xl mb-4 flex items-center">
+                      <ShieldCheckIcon className="w-5 h-5 ml-2 text-gray-600" /> {/* Security icon */}
                       جميع معلوماتك محفوظة بسرية تامة لدينا
                     </h3>
                   </div>

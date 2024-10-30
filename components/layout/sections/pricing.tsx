@@ -22,7 +22,6 @@ const plans: PlanProps[] = [
     title: "ثمن تحرير العقد/اتفاق/عريضة ",
     price: 300,
     benefitList: [
-      "ابتداءا من 300 دينار",
       "عقد كامل المواصفات القانونية ",
       "عقد خالي من أي ثغرة قانونية",
       "يتم تحرير العقد في أجل 3 أيام ",
@@ -57,11 +56,15 @@ const PricingSection = () => {
             </CardHeader>
 
             <CardContent dir="rtl" className="flex flex-col items-center">
-              <span className="text-3xl font-bold text-green-500 mb-2">ابتداءا من {price} دينار</span>
-              {/* Conditionally render the del element only for the consultation card */}
               {title === "ثمن الاستشارة" && (
-                <del className="text-lg text-red-500">120 TND</del>
+                <span className="text-lg text-red-500">
+                  سيتم تحديد ثمن الاستشارة النهائي بعد مراجعتها من قبل فريقنا
+                </span>
               )}
+              <span className="text-3xl font-bold text-green-500 mb-2">
+                ابتداءا من {price} دينار
+              </span>
+
               <div className="space-y-4 mt-4">
                 {benefitList.map((benefit) => (
                   <span key={benefit} className="flex items-center">
@@ -71,6 +74,7 @@ const PricingSection = () => {
                 ))}
               </div>
             </CardContent>
+
           </Card>
         ))}
       </div>

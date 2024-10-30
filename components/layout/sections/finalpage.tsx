@@ -55,9 +55,10 @@ const FinalPage = () => {
             </span>
 
             <div className='flex items-center justify-center mt-2'> {/* Flexbox for alignment */}
-              <PhoneIcon className='w-5 h-5 mr-1' /> {/* Phone icon next to the number */}
               <span dir='ltr'>+216 53 925 344</span> {/* Phone number */}
+              <PhoneIcon className='w-5 h-5 mr-1' /> {/* Phone icon to the left of the number */}
             </div>
+
           </p>
 
           <div className='space-y-4 md:space-y-0 md:space-x-4'>
