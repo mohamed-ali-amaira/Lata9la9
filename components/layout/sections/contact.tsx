@@ -1,10 +1,9 @@
 "use client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Building2, Clock, Mail, Phone } from "lucide-react";
+import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import {
   Form,
@@ -69,11 +68,13 @@ const ContactSection = () => {
       className="container flex items-center justify-center py-24 sm:py-32"
       style={{ marginTop: -100 }}
     >
-      <section className="lg:w-4/6 w-full">
+      <section className="lg:w-3/6 w-full"> 
         <div>
           <div className="mb-4">
-            <h2 className="text-3xl text-center md:text-4xl font-bold">
-              استشرنا الان
+            <h2 className='text-4xl font-bold text-center'>
+              <span className="text-transparent bg-gradient-to-r from-[#f22b0a] to-primary bg-clip-text">
+                استشرنا الان
+              </span>
             </h2>
           </div>
         </div>
@@ -93,7 +94,7 @@ const ContactSection = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>الإسم</FormLabel>
+                        <FormLabel className="text-[#031833]">الإسم</FormLabel>
                         <FormControl>
                           <Input
                             placeholder=""
@@ -101,7 +102,7 @@ const ContactSection = () => {
                             className="border border-gray-600 rounded-lg" // Darker border added here
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-[#031833]" />
                       </FormItem>
                     )}
                   />
@@ -110,7 +111,7 @@ const ContactSection = () => {
                     name="phone"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>رقم الهاتف</FormLabel>
+                        <FormLabel className="text-[#031833]">رقم الهاتف</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -119,7 +120,7 @@ const ContactSection = () => {
                             className="border border-gray-600 rounded-lg" // Darker border added here
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-[#031833]" />
                       </FormItem>
                     )}
                   />
@@ -131,7 +132,7 @@ const ContactSection = () => {
                     name="adress"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>احكيلنا</FormLabel>
+                        <FormLabel className="text-[#031833]">احكيلنا</FormLabel>
                         <FormControl>
                           <textarea
                             placeholder="اكتب هنا"
@@ -145,7 +146,7 @@ const ContactSection = () => {
                             }}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-[#031833]" />
                       </FormItem>
                     )}
                   />
@@ -153,8 +154,8 @@ const ContactSection = () => {
 
                 <div dir="rtl" className="flex w-full ">
                   <div className="flex flex-1 flex-col items-start justify-start py-8 px-4">
-                    <h2 className="text-2xl mb-4">شكرا على ثقتك بنا</h2>
-                    <h3 className="text-1xl mb-4 flex items-center">
+                    <h2 className="text-2xl mb-4 text-[#031833]">شكرا على ثقتك بنا</h2>
+                    <h3 className="text-1xl mb-4 flex items-center text-[#031833]">
                       <ShieldCheckIcon className="w-5 h-5 ml-2 text-gray-600" /> {/* Security icon */}
                       جميع معلوماتك محفوظة بسرية تامة لدينا
                     </h3>

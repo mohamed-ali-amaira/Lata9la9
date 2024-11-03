@@ -140,12 +140,13 @@ const TestimonialSection2 = () => {
       <div className='text-center'>
         <h2
           dir='rtl'
-          className='text-6xl font-bold text-center mb-4'
+          className='text-4xl font-bold text-center mb-4'
         >
           سئلنا حرفائنا عن اراءهم
         </h2>
       </div>
-
+      <br/>
+      <br/>
       <Carousel
         opts={{
           align: "end",
@@ -159,16 +160,15 @@ const TestimonialSection2 = () => {
             <CarouselItem
               key={review.name}
               className='md:basis-1/2 lg:basis-1/3'
-            // dir={"rtl"}
             >
               <Card className='bg-muted/50 dark:bg-card'>
                 <CardContent className='pt-6 pb-0'>
                   <div className='flex gap-1 pb-6'>
-                    <Star className='size-4 fill-primary text-primary' />
-                    <Star className='size-4 fill-primary text-primary' />
-                    <Star className='size-4 fill-primary text-primary' />
-                    <Star className='size-4 fill-primary text-primary' />
-                    <Star className='size-4 fill-primary text-primary' />
+                    <Star className='size-4 text-yellow-500' />
+                    <Star className='size-4 text-yellow-500' />
+                    <Star className='size-4 text-yellow-500' />
+                    <Star className='size-4 text-yellow-500' />
+                    <Star className='size-4 text-yellow-500' />
                   </div>
                   {review.image.length == 0 ? (
                     <div>{review.comment}</div>

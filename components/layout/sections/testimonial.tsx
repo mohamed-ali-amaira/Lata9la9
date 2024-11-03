@@ -37,11 +37,11 @@ const reviewList: ReviewProps[] = [
   },
   {
     image: "",
-    comment: `متابعة خاصة:\nبعد ما تكمل استشارتنا نرجعولك باش نتاكدو انه حقك مضمون.\nعندك الحق تعاود تسالنا.\nنوفرولك suivi ترجع تسالنا بلاش على نفس الموضوع في صورة صارو تطورات\nنوفرولك ملخص الاستشارة عند الطلب بش ما تنسى شي.`,
+    comment: `رفع الاجراء الحدودي S17 :\nنحبو نبشروكم الي الاجراء هذا غير قانوني وتنجم تلغيه وترجع تعيش حياتك عادي وذلك باتباع اجراءات قانونية ساهلة كيما عملو عديد حرفائنا الي تلقاو اراءهم لوطى.`,
   },
   {
     image: "",
-    comment: `رفع الاجراء الحدودي S17 :\nنحبو نبشروكم الي الاجراء هذا غير قانوني وتنجم تلغيه وترجع تعيش حياتك عادي وذلك باتباع اجراءات قانونية ساهلة كيما عملو عديد حرفائنا الي تلقاو اراءهم لوطى.`,
+    comment: `متابعة خاصة:\nبعد ما تكمل استشارتنا نرجعولك باش نتاكدو انه حقك مضمون.\nعندك الحق تعاود تسالنا.\nنوفرولك suivi ترجع تسالنا بلاش على نفس الموضوع في صورة صارو تطورات\nنوفرولك ملخص الاستشارة عند الطلب بش ما تنسى شي.`,
   },
 ];
 
@@ -51,11 +51,12 @@ const TestimonialSection = () => {
       <div className='text-center'>
         <h2
           dir='rtl'
-          className='text-6xl font-bold text-center mb-4'
+          className='text-4xl font-bold text-center mb-8' 
         >
           شنو نقدمولك؟
         </h2>
       </div>
+
 
       <Carousel
         opts={{
@@ -63,7 +64,7 @@ const TestimonialSection = () => {
           startIndex: window.innerWidth >= 720 ? 1 : 2,
           loop: true,
         }}
-        className='relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto'
+        className='relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto mt-8' // Added top margin
       >
         <CarouselContent>
           {reviewList.map((review, index) => (
@@ -71,22 +72,20 @@ const TestimonialSection = () => {
               key={index}
               className='md:basis-1/2 lg:basis-1/3'
             >
-              <Card className='bg-muted/50 dark:bg-card'>
-                <CardContent className='pt-6 pb-0'>
+              <Card className='bg-gray-200 dark:bg-card'> {/* Changed background color */}
+                <CardContent className='pt-6 pb-8'> {/* Increased bottom padding */}
                   {review.image.length === 0 ? (
-                    // Split the comment into parts
-                    <div dir='rtl'>
+                    <div dir='rtl' className="flex flex-col items-center"> {/* Center-align the content */}
                       {review.comment.split("\n").map((line, i) => {
-                        // Check if the line contains ":"
                         if (line.includes(":")) {
                           return (
-                            <div key={i} className="text-center mb-2">
-                              {line} {/* Centered first sentence */}
+                            <div key={i} className="text-center mb-2 font-semibold">
+                              <strong>{line}</strong> {/* Bold and centered title */}
                             </div>
                           );
                         } else {
                           return (
-                            <span key={i}>
+                            <span key={i} className="text-center mb-2"> {/* Center the text lines */}
                               {line}
                               <br />
                             </span>
@@ -106,9 +105,6 @@ const TestimonialSection = () => {
         <CarouselNext />
       </Carousel>
 
-      <div className='w-full mt-2 flex items-center justify-center'>
-        <RegisterButton />
-      </div>
     </section>
   );
 };

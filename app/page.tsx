@@ -30,14 +30,14 @@ const TestimonialSection = dynamic(
 );
 
 const TestimonialSection2 = dynamic(
-  () => import("@/components/layout/sections/testimonial2"), // New TestimonialSection2 imported
+  () => import("@/components/layout/sections/testimonial2"), // New TestimonialSection2
   {
     ssr: false,
   }
 );
 
 const FinalPage = dynamic(
-  () => import("@/components/layout/sections/finalpage"), // Importing FinalPage section
+  () => import("@/components/layout/sections/finalpage"), // FinalPage section
   {
     ssr: false,
   }
@@ -63,15 +63,6 @@ export const metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Formation Sponsoring",
-    description: "Free Shadcn landing page for developers",
-    images: [
-      "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
-    ],
-  },
 };
 
 export default function Home() {
@@ -80,11 +71,10 @@ export default function Home() {
       <HeroSection />
       <TestimonialSection />
       <Merkanti />
-      <FAQSection />
-      <TestimonialSection2 /> {/* New TestimonialSection2 added after FAQ */}
+      <TestimonialSection2 /> 
       <PricingSection />
       <ContactSection />
-      <FinalPage /> {/* FinalPage added as the last section */}
+      <FAQSection />
       <FloatingButton />
     </>
   );

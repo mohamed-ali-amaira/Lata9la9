@@ -5,8 +5,14 @@ import { createHash } from "crypto";
 
 // Type for the form submission request body
 interface FormSubmissionRequestBody {
-  email: string;
-  value?: string;
+  name: string; // Added name to the request body
+  phone: string; // Added phone to the request body
+  email: string; // Email field should still be present
+  adress: string; // Address field from the form
+  occupation: string; // Occupation field added
+  city?: string; // City can be optional
+  referrer?: string; // Referrer can be optional
+  selectedOption: string; // Selected option from the form
 }
 
 // Hash function for email
@@ -16,8 +22,8 @@ function hashEmail(email: string): string {
 
 // Function to send event to Facebook Conversion API
 async function sendConversionEvent(emailHash: string, value?: string) {
-  const pixelId = "YOUR_PIXEL_ID";
-  const accessToken = "YOUR_ACCESS_TOKEN";
+  const pixelId = "YOUR_PIXEL_ID"; // Replace with your actual pixel ID
+  const accessToken = "YOUR_ACCESS_TOKEN"; // Replace with your actual access token
   const url = `https://graph.facebook.com/v17.0/${pixelId}/events`;
 
   const payload = {
@@ -29,7 +35,7 @@ async function sendConversionEvent(emailHash: string, value?: string) {
           em: emailHash, // Hashed email
         },
         custom_data: {
-          value: value || "0.00",
+          value: value || "0.00", // Default value if none is provided
           currency: "TND", // Customize this as per your needs
         },
       },
@@ -57,11 +63,11 @@ export async function POST(request: Request) {
       email,
       adress,
       occupation,
-      city,
-      referrer,
       selectedOption,
-    } = body;
+      referrer,
+    }: FormSubmissionRequestBody = body; // Ensure to destructure based on the new type
 
+    // Make a request to your webhook or external API
     const req = await axios.post(
       "https://n8n.lataklak.tn/webhook/09835f9a-8232-462f-b9d8-5246b00058cc",
       {
@@ -69,8 +75,8 @@ export async function POST(request: Request) {
         phone,
         email,
         adress,
-        job: occupation,
-        city,
+        job: occupation, // Map occupation correctly
+        // city, // Uncomment if you have city data to send
         referral: referrer,
         method: selectedOption,
       }
@@ -80,9 +86,9 @@ export async function POST(request: Request) {
     const emailHash = hashEmail(email);
 
     // Send conversion event to Facebook
-    const result = await sendConversionEvent(emailHash, "197");
+    const result = await sendConversionEvent(emailHash, "197"); // Sending a fixed value of "197" for demonstration
 
-    console.log(result);
+    console.log(result); // Log the result for debugging
 
     // Send a success response
     return NextResponse.json(
@@ -90,7 +96,7 @@ export async function POST(request: Request) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error:", error); // Log any errors for debugging
     return NextResponse.json(
       { error: "An error occurred while processing your request" },
       { status: 500 }

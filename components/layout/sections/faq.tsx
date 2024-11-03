@@ -4,12 +4,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import RegisterButton from "@/components/ui/register";
 import { PhoneIcon } from "@heroicons/react/24/solid";
 
 interface FAQProps {
   question: string;
-  answer: string[];
+  answer: string | string[];
   value: string;
 }
 
@@ -75,8 +74,11 @@ const FAQList: FAQProps[] = [
   {
     question: "كيفاش نخلصكم؟",
     answer: [
-      "طرق الخلاص مقسمة على 3 : <strong>الحوالة البنكية (versement bancaire)</strong> أو <strong>الـ Moneygram</strong> أو <strong>Western Union</strong> بالنسبة للمقيمين بالخارج.",
-      "بتطبيق الـ <strong>D17</strong> يتم <strong>الخلاص بعد تحديد التعريفة المناسبة</strong> وقبل <strong>تحديد الموعد مع المستشار</strong>."
+      "طرق الخلاص مقسمة على 3 :",
+      "<strong> الحوالة البنكية (versement bancaire)</strong>",
+      "<strong> الـWestern Union أو الـMoneygram بالنسبة للمقيمين بالخارج</strong>",
+      "<strong> بتطبيق الـD17</strong>",
+      "يتم الخلاص بعد تحديد التعريفة المناسبة وقبل تحديد الموعد مع المستشار."
     ],
     value: "item-7",
   },
@@ -90,11 +92,16 @@ const FAQList: FAQProps[] = [
 ];
 
 export const FAQSection = () => {
+  const phoneNumber = "21653925344";
+  const whatsappLink = `https://wa.me/${phoneNumber.replace(/\+/g, '')}`;
+
   return (
-    <section id='faq' className='container md:w-[700px] py-24 sm:py-32'>
+    <section id='faq' className='container md:w-[600px] py-24 sm:py-32'>
       <div className='text-center mb-8'>
-        <h2 className='text-6xl font-bold text-center'>
-          أسئلة ديما تطرحوها
+        <h2 className='text-4xl font-bold text-center'>
+          <span className="text-transparent bg-gradient-to-r from-[#f22b0a] to-primary bg-clip-text">
+            أسئلة ديما تطرحوها
+          </span>
         </h2>
       </div>
 
@@ -106,28 +113,30 @@ export const FAQSection = () => {
             </AccordionTrigger>
 
             <AccordionContent>
-              <ul className="list-disc list-inside">
-                {answer.map((line, i) => (
-                  <li key={i} dangerouslySetInnerHTML={{ __html: line }} />
-                ))}
+              <ul className={`${value === 'item-7' ? 'list-disc' : ''} list-inside`}>
+                {Array.isArray(answer) ? (
+                  answer.map((line, i) => (
+                    <li key={i} dangerouslySetInnerHTML={{ __html: line }} className={`${value === 'item-7' ? 'mb-1' : ''}`} />
+                  ))
+                ) : (
+                  <li dangerouslySetInnerHTML={{ __html: answer }} />
+                )}
               </ul>
             </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
-
+      <br />
       <h2 dir='rtl' className='text-center my-2 text-2xl'>
         في الحالات الكل تنجم ديما تتصل بينا بش تستفسر
         <br />
-        <div className='flex items-center justify-center mt-2 text-5xl font-bold'>
-          <span dir='ltr'>+216 53 925 344</span>
+        <br />
+        <br />
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className='flex items-center justify-center mt-2 text-5xl font-bold'>
+          <span dir='ltr'>{phoneNumber}</span>
           <PhoneIcon className='w-10 h-10 ml-2' />
-        </div>
+        </a>
       </h2>
-
-      <div className='w-full flex items-center justify-center mt-8'>
-        <RegisterButton />
-      </div>
     </section>
   );
 };

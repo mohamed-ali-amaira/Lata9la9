@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -44,8 +43,8 @@ const plans: PlanProps[] = [
 const PricingSection = () => {
   return (
     <section className="container text-left py-24 sm:py-32" style={{ marginTop: -100 }}>
-      <h2 className="text-3xl md:text-4xl text-center mb-4">التعريفة</h2>
-      <h2 className="text-3xl md:text-4xl text-center mb-4">- -</h2>
+      <h2 className="text-3xl md:text-4xl text-center mb-4 font-bold">التعريفة</h2>
+      <h2 className="text-3xl md:text-4xl text-center mb-4 font-bold">° ° ° °</h2>
 
       {/* Displaying 2 cards */}
       <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
@@ -57,10 +56,9 @@ const PricingSection = () => {
 
             <CardContent dir="rtl" className="flex flex-col items-center">
               {title === "ثمن الاستشارة" && (
-                <span className="text-lg text-red-500">
-                  سيتم تحديد ثمن الاستشارة النهائي بعد مراجعتها من قبل فريقنا
-                </span>
+                <del className="text-lg text-red-500">80 TND</del>
               )}
+
               <span className="text-3xl font-bold text-green-500 mb-2">
                 ابتداءا من {price} دينار
               </span>
@@ -73,17 +71,15 @@ const PricingSection = () => {
                   </span>
                 ))}
               </div>
-            </CardContent>
 
+              {title === "ثمن الاستشارة" && (
+                <span className="text-sm text-green-600 mt-4">
+                  سيتم تحديد ثمن الاستشارة النهائي بعد مراجعتها من قبل فريقنا
+                </span>
+              )}
+            </CardContent>
           </Card>
         ))}
-      </div>
-
-      {/* Single button centered under the cards */}
-      <div className="flex justify-center mt-8">
-        <Button variant="default" className="w-full lg:w-1/3">
-          <Link href="#contact">استشرنا الان</Link>
-        </Button>
       </div>
     </section>
   );
