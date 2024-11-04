@@ -30,7 +30,7 @@ export default function Navbar() {
   return (
     <header className='shadow-inner w-full max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex flex-col md:flex-row items-center p-2 bg-white'>
       
-      {/* Button for larger screens */}
+      {/* Button for larger screens only */}
       <div className='hidden md:flex justify-start w-3/12'>
         <Button
           className='w-full md:w-2/4 font-bold group/arrow'
