@@ -21,15 +21,16 @@ interface ReviewProps {
 const reviewList: ReviewProps[] = [
   {
     image: "",
-    comment: `استشارة عن بعد :\nبالهاتف وين انت.\nوقت الي يساعدك انت.\nتاخو وقتك في المكالمة قد ما تستحق.`,
+    comment: `تحرير العقود :\nنوفرولك كل انواع العقود سواء المهنية للـ freelancers او للبيع او الكراء او اتفاق طلاق او اي نوع من انواع الالتزام بين طرفين\nنوفرولك عقود خالية من اي ثغرة قانونية يمكن استغلالها فيما بعد, عقود تضمنلك حقك على المدى البعيد.`,
   },
+  
   {
     image: "",
     comment: `كتب اتفاق (قضايا الطلاق) :\nتحرير كتب اتفاق ومتابعة القضية بمختلف اجراءاتها ومراحلها\nباش نتاكدو الي الاجراءات تمشي بالسرعة الي تحب عليها انت.`,
   },
   {
     image: "",
-    comment: `تحرير العقود :\nنوفرولك كل انواع العقود سواء المهنية للـ freelancers او للبيع او الكراء او اتفاق طلاق او اي نوع من انواع الالتزام بين طرفين\nنوفرولك عقود خالية من اي ثغرة قانونية يمكن استغلالها فيما بعد, عقود تضمنلك حقك على المدى البعيد.`,
+    comment: `استشارة عن بعد :\nبالهاتف وين انت.\nوقت الي يساعدك انت.\nتاخو وقتك في المكالمة قد ما تستحق.`,
   },
   {
     image: "",
@@ -51,12 +52,11 @@ const TestimonialSection = () => {
       <div className='text-center'>
         <h2
           dir='rtl'
-          className='text-4xl font-bold text-center mb-8' 
+          className='text-4xl font-bold text-center mb-8'
         >
           شنو نقدمولك؟
         </h2>
       </div>
-
 
       <Carousel
         opts={{
@@ -64,7 +64,7 @@ const TestimonialSection = () => {
           startIndex: window.innerWidth >= 720 ? 1 : 2,
           loop: true,
         }}
-        className='relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto mt-8' // Added top margin
+        className='relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto mt-8'
       >
         <CarouselContent>
           {reviewList.map((review, index) => (
@@ -72,39 +72,44 @@ const TestimonialSection = () => {
               key={index}
               className='md:basis-1/2 lg:basis-1/3'
             >
-              <Card className='bg-gray-200 dark:bg-card'> {/* Changed background color */}
-                <CardContent className='pt-6 pb-8'> {/* Increased bottom padding */}
+              <Card className='bg-gray-200 dark:bg-card'>
+                <CardContent className='pt-6 pb-8'>
                   {review.image.length === 0 ? (
-                    <div dir='rtl' className="flex flex-col items-center"> {/* Center-align the content */}
+                    <div dir='rtl' className="flex flex-col items-center">
                       {review.comment.split("\n").map((line, i) => {
                         if (line.includes(":")) {
                           return (
                             <div key={i} className="text-center mb-2 font-semibold">
-                              <strong>{line}</strong> {/* Bold and centered title */}
+                              <strong>{line}</strong>
                             </div>
                           );
                         } else {
                           return (
-                            <span key={i} className="text-center mb-2"> {/* Center the text lines */}
+                            <span key={i} className="text-center mb-2">
                               {line}
-                              <br />
                             </span>
                           );
                         }
                       })}
                     </div>
                   ) : (
-                    <Image alt='' src={review.image} width={300} height={100} />
+                    <Image src={review.image} alt="" width={300} height={100} />
                   )}
                 </CardContent>
               </Card>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="absolute left-0 z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
+          <span className="material-icons">arrow_back</span>
+        </CarouselPrevious>
+        <CarouselNext className="absolute right-0 z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
+          <span className="material-icons">arrow_forward</span>
+        </CarouselNext>
       </Carousel>
-
+      <div className='w-full mt-2 flex items-center justify-center'>
+        <RegisterButton />
+      </div>
     </section>
   );
 };

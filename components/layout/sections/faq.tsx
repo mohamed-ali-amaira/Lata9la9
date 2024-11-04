@@ -75,10 +75,10 @@ const FAQList: FAQProps[] = [
     question: "كيفاش نخلصكم؟",
     answer: [
       "طرق الخلاص مقسمة على 3 :",
-      "<strong> الحوالة البنكية (versement bancaire)</strong>",
-      "<strong> الـWestern Union أو الـMoneygram بالنسبة للمقيمين بالخارج</strong>",
-      "<strong> بتطبيق الـD17</strong>",
-      "يتم الخلاص بعد تحديد التعريفة المناسبة وقبل تحديد الموعد مع المستشار."
+      "• <strong>الحوالة البنكية (versement bancaire)</strong>", // Point added
+      "• <strong>الـWestern Union أو الـMoneygram بالنسبة للمقيمين بالخارج</strong>", // Point added
+      "• <strong>بتطبيق الـD17</strong>", // Point added
+      "• يتم الخلاص بعد تحديد التعريفة المناسبة وقبل تحديد الموعد مع المستشار." // Point added
     ],
     value: "item-7",
   },
@@ -92,14 +92,14 @@ const FAQList: FAQProps[] = [
 ];
 
 export const FAQSection = () => {
-  const phoneNumber = "21653925344";
-  const whatsappLink = `https://wa.me/${phoneNumber.replace(/\+/g, '')}`;
+  const phoneNumber = "53925344";
+  const whatsappLink = `https://wa.me/${phoneNumber.replace(/\+216/g, '')}`;
 
   return (
     <section id='faq' className='container md:w-[600px] py-24 sm:py-32'>
       <div className='text-center mb-8'>
         <h2 className='text-4xl font-bold text-center'>
-          <span className="text-transparent bg-gradient-to-r from-[#f22b0a] to-primary bg-clip-text">
+          <span style={{ color: "#031833" }}>
             أسئلة ديما تطرحوها
           </span>
         </h2>
@@ -113,7 +113,7 @@ export const FAQSection = () => {
             </AccordionTrigger>
 
             <AccordionContent>
-              <ul className={`${value === 'item-7' ? 'list-disc' : ''} list-inside`}>
+              <ul className={`${value === 'item-7' ? 'list-none' : 'list-inside'}`}>
                 {Array.isArray(answer) ? (
                   answer.map((line, i) => (
                     <li key={i} dangerouslySetInnerHTML={{ __html: line }} className={`${value === 'item-7' ? 'mb-1' : ''}`} />
@@ -131,8 +131,15 @@ export const FAQSection = () => {
         في الحالات الكل تنجم ديما تتصل بينا بش تستفسر
         <br />
         <br />
+        <span className='text-sm text-gray-500'>اضغط على الرقم للتواصل معنا على واتساب</span>
         <br />
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className='flex items-center justify-center mt-2 text-5xl font-bold'>
+        <br />
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className='flex items-center justify-center mt-2 text-5xl font-bold hover:text-blue-600 transition-colors duration-200'
+        >
           <span dir='ltr'>{phoneNumber}</span>
           <PhoneIcon className='w-10 h-10 ml-2' />
         </a>

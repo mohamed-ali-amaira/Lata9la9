@@ -50,15 +50,22 @@ const ContactSection = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { name, phone, adress } = values;
     const referrer = extractReferrer(window.location.href);
-    const req = await axios.post(`/api/submit`, {
-      ...values,
-      occupation: "",
-      selectedOption,
-      referrer,
-    });
+    
+    try {
+      const req = await axios.post(`/api/submit`, {
+        ...values,
+        occupation: "",
+        selectedOption,
+        referrer,
+      });
 
-    if (req.status == 200) {
-      router.push(`/thanks?method=${selectedOption}`);
+      console.log('Response:', req.data);
+
+    } catch (error) {
+      console.error('Error during submission:', error);
+    } finally {
+      // Redirect to the thanks page regardless of success or failure
+      router.push('/thanks');
     }
   }
 
@@ -99,7 +106,7 @@ const ContactSection = () => {
                           <Input
                             placeholder=""
                             {...field}
-                            className="border border-gray-600 rounded-lg" // Darker border added here
+                            className="border border-gray-600 rounded-lg"
                           />
                         </FormControl>
                         <FormMessage className="text-[#031833]" />
@@ -117,7 +124,7 @@ const ContactSection = () => {
                             type="number"
                             placeholder=""
                             {...field}
-                            className="border border-gray-600 rounded-lg" // Darker border added here
+                            className="border border-gray-600 rounded-lg"
                           />
                         </FormControl>
                         <FormMessage className="text-[#031833]" />
@@ -156,7 +163,7 @@ const ContactSection = () => {
                   <div className="flex flex-1 flex-col items-start justify-start py-8 px-4">
                     <h2 className="text-2xl mb-4 text-[#031833]">شكرا على ثقتك بنا</h2>
                     <h3 className="text-1xl mb-4 flex items-center text-[#031833]">
-                      <ShieldCheckIcon className="w-5 h-5 ml-2 text-gray-600" /> {/* Security icon */}
+                      <ShieldCheckIcon className="w-5 h-5 ml-2 text-gray-600" />
                       جميع معلوماتك محفوظة بسرية تامة لدينا
                     </h3>
                   </div>

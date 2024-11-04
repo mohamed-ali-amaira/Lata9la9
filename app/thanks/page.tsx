@@ -1,207 +1,72 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import RegisterButton from "@/components/ui/register";
+import { ArrowLeft } from "lucide-react";
+import { useEffect, useState } from "react";
+import { PhoneIcon } from "@heroicons/react/24/solid";
 
-// Function to generate random order number
-const generateOrderNumber = () => {
-  return Math.floor(100000 + Math.random() * 900000); // Generates a random 6-digit number
-};
 
-const InvoiceComp = () => {
-  const [orderNumber, setOrderNumber] = useState("");
-  const [currentDate, setCurrentDate] = useState("");
+const FinalPage = () => {
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    // Generate order number and current date on client side
-    // @ts-ignore
-    setOrderNumber(generateOrderNumber());
-    setCurrentDate(new Date().toLocaleDateString());
-  }, []); // Empty dependency array ensures this only runs once when the component mounts
+    setWidth(window.innerWidth);
+  }, []);
 
-  const invoiceItems = [
-    {
-      id: 1,
-      item: "Abonnement Formation Sponsoring",
-      quantity: 1,
-      price: 247.0,
-    },
-  ];
-
-  // Calculate total before and after Remise (discount)
-  const totalPrice = invoiceItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-  const remise = 50.0; // Discount of 50 TND
-  const finalPrice = totalPrice - remise;
+  const scrollToContact = () => {
+    const contactElement = document.getElementById("contact");
+    if (contactElement) {
+      window.scrollTo({
+        top: contactElement.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <div className='container mx-auto p-4 bg-gray-800 mt-10 mb-5'>
-      {/* Invoice Header */}
-      <div className='flex justify-between items-center mb-4'>
-        <h2 className='text-2xl font-bold text-white'>Facture</h2>
-        <div className='text-white text-right'>
-          <p>Tunis, Tunisie | 25 25 18 08</p>
-          <p>Order #: {orderNumber}</p>
-          <p>Date: {currentDate}</p>
+    <section
+      className='container w-full'
+      style={{ marginBottom: width >= 720 ? -125 : "auto" }}
+    >
+      <div className='grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-16 md:py-32'>
+        <div className='text-center space-y-8'>
+          <div className='max-w-screen-md mx-auto text-center text-3xl md:text-4xl font-bold'>
+            <h1 style={{ direction: "rtl" }}>
+              شكرا على ثقتكم فينا
+            </h1>
+            <br />
+            <h3 style={{ direction: "rtl" }}>
+              سيتم مراجعة طلبكم و من ثم الاتصال بكم فورا
+            </h3>
+          </div>
+          <br />
+          <div className='max-w-screen-md mx-auto text-lg md:text-2xl font-bold'>
+            <h1 style={{ direction: "rtl" }}>
+              &quot;خويا الغالي لا تقلق&quot;
+            </h1>
+            <br />
+          </div>
+          <p
+            style={{ direction: "rtl" }}
+            className='max-w-screen-sm mx-auto text-xl text-muted-foreground'
+          >
+            <span className='block'>
+              {`يمكنكم دائما الاستفسار على`}
+            </span>
+
+            <div className='flex items-center justify-center mt-2'> {/* Flexbox for alignment */}
+              <span dir='ltr'>+216 53 925 344</span> {/* Phone number */}
+              <PhoneIcon className='w-5 h-5 mr-1' /> {/* Phone icon to the left of the number */}
+            </div>
+
+          </p>
+
+          <div className='space-y-4 md:space-y-0 md:space-x-4'>
+          </div>
         </div>
       </div>
-
-      {/* Invoice Table */}
-      <table className='min-w-full bg-gray-900 shadow-md rounded'>
-        <thead>
-          <tr>
-            <th className='py-2 px-4 bg-gray-700 text-left text-white font-bold'>
-              Item
-            </th>
-            <th className='py-2 px-4 bg-gray-700 text-left text-white font-bold'>
-              Qté
-            </th>
-            <th className='py-2 px-4 bg-gray-700 text-left text-white font-bold'>
-              Prix unitaire (TND)
-            </th>
-            <th className='py-2 px-4 bg-gray-700 text-left text-white font-bold'>
-              Total (TND)
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {invoiceItems.map((item) => (
-            <tr key={item.id} className='border-b border-gray-600'>
-              <td className='py-2 px-4 text-white'>{item.item}</td>
-              <td className='py-2 px-4 text-white'>{item.quantity}</td>
-              <td className='py-2 px-4 text-white'>
-                {item.price.toFixed(2)} TND
-              </td>
-              <td className='py-2 px-4 text-white'>
-                {(item.quantity * item.price).toFixed(2)} TND
-              </td>
-            </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td
-              colSpan={3}
-              className='py-2 px-4 text-right text-white font-bold'
-            >
-              Sous-total:
-            </td>
-            <td className='py-2 px-4 text-white font-bold'>
-              {totalPrice.toFixed(2)} TND
-            </td>
-          </tr>
-          <tr>
-            <td
-              colSpan={3}
-              className='py-2 px-4 text-right text-white font-bold'
-            >
-              Remise:
-            </td>
-            <td className='py-2 px-4 text-white font-bold'>-50.00 TND</td>
-          </tr>
-          <tr>
-            <td
-              colSpan={3}
-              className='py-2 px-4 text-right text-white font-bold'
-            >
-              Total à payer:
-            </td>
-            <td className='py-2 px-4 text-white font-bold'>
-              {finalPrice.toFixed(2)} TND
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+    </section>
   );
 };
 
-export default function Thanks() {
-  const [showRib, setShowRib] = useState(false);
-  useEffect(() => {
-    if (window) {
-      setShowRib(window.location.href.includes("rib"));
-    }
-  }, []);
-  if (!showRib) {
-    return (
-      <div>
-        <div className='container w-full mt-20 text-center overflow-visible'>
-          <h2 dir='rtl' className='text-5xl'>
-            شكرا على ثيقتك فينا !
-          </h2>
-          {!showRib && (
-            <h2 dir='rtl' className='text-3xl mt-16'>
-              خلي تاليفونك بحذاك بش نكلموك على confirmation
-            </h2>
-          )}
-
-          <h2 dir='rtl' className='text-3xl mt-4'>
-            هذا رابط الـgroup متاعنا الي بش نتعلمو فيه أكثر.
-          </h2>
-          <h2 dir='rtl' className='text-2xl mt-4 text-wrap'>
-            <a
-              href='https://www.facebook.com/groups/academy.xposure.tn'
-              target='_blank'
-              className='text-blue-400 text-center text-wrap'
-            >
-              https://www.facebook.com/groups/academy.xposure.tn
-            </a>
-          </h2>
-
-          <h2 dir='rtl' className='text-4xl mt-4'>
-            مرحبا بيك ونشوفوك في الـmasterclass
-          </h2>
-        </div>
-        <InvoiceComp />
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <div className='container w-full mt-20 text-center overflow-visible'>
-          <h2 className='text-center mt-5 text-2xl text-primary'>
-            RIB : 04 093 178 0085060952 33 TN <br /> SOCIETE IDEAS STUDIOS{" "}
-          </h2>
-          <p
-            dir='rtl'
-            className='text-lg mt-3 lg:flex lg:items-center lg:justify-center lg:flex-col'
-          >
-            <span className='text-2xl font-bold'>كيفاش تعمل بالضبط؟</span>
-            <br />
-            <ol className='list-decimal  lg:w-1/3 text-right'>
-              <li>تمشي لأقرب فرع التجاري تعطيه الـrib الي الفوق </li>
-              <li>تحط اسم الـمستفيد : IDEAS STUDIO</li>
-              <li>تاخو الـreçu وتبعثهولنا عالـwhatsapp هذا 25251808</li>
-              <li>احنا نبعثولك معطياتك الي تستحقها كل.</li>
-            </ol>
-          </p>
-          <div className='w-full overflow-x-auto'>
-            <InvoiceComp />
-          </div>
-
-          <h2 dir='rtl' className='text-5xl'>
-            شكرا على ثيقتك فينا !
-          </h2>
-
-          <h2 dir='rtl' className='text-3xl mt-4'>
-            هذا رابط الـgroup متاعنا الي بش نتعلمو فيه أكثر.
-          </h2>
-          <h2 dir='rtl' className='text-2xl mt-4 text-wrap'>
-            <a
-              href='https://www.facebook.com/groups/academy.xposure.tn'
-              target='_blank'
-              className='text-blue-400 text-center text-wrap'
-            >
-              https://www.facebook.com/groups/academy.xposure.tn
-            </a>
-          </h2>
-
-          <h2 dir='rtl' className='text-4xl mt-4'>
-            مرحبا بيك ونشوفوك في الـmasterclass
-          </h2>
-        </div>
-      </div>
-    );
-  }
-}
+export default FinalPage;
