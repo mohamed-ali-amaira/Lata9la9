@@ -13,7 +13,6 @@ const FloatingButton = () => {
       const scrolledPercentage =
         ((scrollPosition + windowHeight) / documentHeight) * 100;
 
-      // Hide the button when scrolled past 80%
       if (scrolledPercentage > 90) {
         setIsVisible(false);
       } else {
@@ -23,7 +22,6 @@ const FloatingButton = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup event listener on unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -43,7 +41,7 @@ const FloatingButton = () => {
         className='fixed bottom-8 left-1/2 transform -translate-x-1/2 md:hidden bg-blue-500 text-white rounded-full px-6 py-3 shadow-lg hover:bg-blue-600 focus:outline-none'
         aria-label='Contact Us'
       >
-        إنضمّ الآن
+        استشرنا الان
       </button>
     );
   } else {

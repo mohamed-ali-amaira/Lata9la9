@@ -120,11 +120,11 @@ const reviewList: ReviewProps[] = [
 
 const TestimonialSection2 = () => {
   return (
-    <section id='testimonials' className='container py-24 sm:py-32'>
-      <div className='text-center'>
+    <section id="testimonials" className="container py-24 sm:py-32">
+      <div className="text-center">
         <h2
-          dir='rtl'
-          className='text-4xl font-bold text-center mb-4'
+          dir="rtl"
+          className="text-4xl font-bold text-center mb-4"
           style={{ color: "#031833" }}
         >
           سئلنا حرفائنا عن اراءهم
@@ -138,43 +138,32 @@ const TestimonialSection2 = () => {
           startIndex: window.innerWidth >= 720 ? 1 : 2,
           loop: true,
         }}
-        className='relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto'
+        className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
       >
         <CarouselContent>
           {reviewList.map((review) => (
-            <CarouselItem
-              key={review.name}
-              className='md:basis-1/2 lg:basis-1/3'
-            >
-              <Card className='bg-muted/50 dark:bg-card'>
-                <CardContent className='pt-6 pb-0'>
-                  <div className='flex gap-1 pb-6'>
-                    <Star className='size-4 text-yellow-500' />
-                    <Star className='size-4 text-yellow-500' />
-                    <Star className='size-4 text-yellow-500' />
-                    <Star className='size-4 text-yellow-500' />
-                    <Star className='size-4 text-yellow-500' />
+            <CarouselItem key={review.userName} className="md:basis-1/2 lg:basis-1/3">
+              <Card className="bg-muted/50 dark:bg-card">
+                <CardContent className="pt-6 pb-0">
+                  <div className="flex gap-1 pb-6">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="size-4 text-yellow-500" fill="currentColor" />
+                    ))}
                   </div>
-                  {review.image.length === 0 ? (
-                    <div dir="rtl" className='text-right'>
-                      {review.comment}
-                    </div>
-                  ) : (
-                    <Image alt='' src={review.image} width={300} height={100} />
-                  )}
+                  <div dir={/[\u0600-\u06FF]/.test(review.comment) ? "rtl" : "ltr"} className="text-right">
+                    {review.comment}
+                  </div>
                 </CardContent>
-
                 <CardHeader>
-                  <div className='flex flex-row items-center gap-4'>
+                  <div className="flex flex-row items-center gap-4">
                     <Avatar>
                       {review.avatar && (
-                        <AvatarImage src={review.avatar} alt='radix' />
+                        <AvatarImage src={review.avatar} alt="radix" />
                       )}
-                      <AvatarFallback>{review.name[0]}</AvatarFallback>
+                      <AvatarFallback>{review.name ? review.name[0] : review.userName[0]}</AvatarFallback>
                     </Avatar>
-
-                    <div className='flex flex-col'>
-                      <CardTitle className='text-lg'>{review.name}</CardTitle>
+                    <div className="flex flex-col">
+                      <CardTitle className="text-lg">{review.name || review.userName}</CardTitle>
                       <CardDescription>{review.userName}</CardDescription>
                     </div>
                   </div>
@@ -190,7 +179,7 @@ const TestimonialSection2 = () => {
           <span className="material-icons">arrow_forward</span>
         </CarouselNext>
       </Carousel>
-      <div className='w-full mt-2 flex items-center justify-center'>
+      <div className="w-full mt-2 flex items-center justify-center">
         <RegisterButton />
       </div>
     </section>
