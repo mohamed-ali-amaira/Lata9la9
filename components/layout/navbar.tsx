@@ -69,7 +69,7 @@ export default function Navbar() {
       <Link href='/' className='font-bold text-lg flex items-center mt-2 md:mt-0'>
         <Image
           src='/images.png'
-          alt='Xposure'
+          alt='lata9la9'
           width={"34"}
           height={"34"}
           className='rounded-lg w-9 h-9 mr-2 border'

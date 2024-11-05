@@ -13,7 +13,7 @@ import Link from "next/link";
 interface PlanProps {
   title: string;
   price: number;
-  benefitList: string[];
+  benefitList: (string | JSX.Element)[];
 }
 
 const plans: PlanProps[] = [
@@ -25,7 +25,12 @@ const plans: PlanProps[] = [
       "مدة المكالمة غير محددة",
       "متابعة خاصة حتى بعد الاستشارة",
       "ملخص للاستشارة عند الطلب",
-      "استشارة عن بعد وين ما انت وفي الوقت الي تختارو",
+      <>
+        استشارة عن بعد وين ما انت{" "}
+        <span style={{ display: 'inline-block', textAlign: 'right', direction: 'rtl' }}>
+          وفي الوقت الي تختارو
+        </span>
+      </>,
     ],
   },
   {
@@ -49,7 +54,6 @@ const PricingSection = () => {
       <h2 className="text-3xl md:text-4xl text-center mb-4 font-bold" style={{ color: "#031833" }}>
         ° ° ° °
       </h2>
-      {/* Displaying 2 cards */}
       <div className="flex flex-col lg:flex-row items-stretch justify-center gap-8">
         {plans.map(({ title, price, benefitList }, index) => (
           <Card 
@@ -70,16 +74,29 @@ const PricingSection = () => {
               </span>
 
               <div className="space-y-4 mt-4">
-                {benefitList.map((benefit) => (
-                  <span key={benefit} className="flex items-center">
-                    <Check className="text-primary ml-2" />
-                    <h3>{benefit}</h3>
+                {benefitList.map((benefit, idx) => (
+                  <span key={idx} className="flex items-center text-center">
+                    {typeof benefit === "string" ? (
+                      <>
+                        <Check className="text-primary ml-2" />
+                        <h3 className={`${benefit.includes("استشارة عن بعد") ? "text-sm md:text-base" : ""}`}>
+                          {benefit}
+                        </h3>
+                      </>
+                    ) : (
+                      <>
+                        <Check className="text-primary ml-2" />
+                        <h3 className="flex flex-col">
+                          {benefit}
+                        </h3>
+                      </>
+                    )}
                   </span>
                 ))}
               </div>
 
               {title === "ثمن الاستشارة" && (
-                <span className="text-sm text-green-600 mt-4">
+                <span className="text-[85%] text-green-600 mt-4 text-center">
                   سيتم تحديد ثمن الاستشارة النهائي بعد مراجعتها من قبل فريقنا
                 </span>
               )}
@@ -88,7 +105,6 @@ const PricingSection = () => {
         ))}
       </div>
 
-      {/* Add the following CSS to your styles file for the glow effect */}
       <style jsx>{`
         .shadow-glow {
           box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);

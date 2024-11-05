@@ -78,7 +78,7 @@ const FAQList: FAQProps[] = [
       "• <strong>الحوالة البنكية (versement bancaire)</strong>", // Point added
       "• <strong>الـWestern Union أو الـMoneygram بالنسبة للمقيمين بالخارج</strong>", // Point added
       "• <strong>بتطبيق الـD17</strong>", // Point added
-      "• يتم الخلاص بعد تحديد التعريفة المناسبة وقبل تحديد الموعد مع المستشار." // Point added
+      "يتم الخلاص بعد تحديد التعريفة المناسبة وقبل تحديد الموعد مع المستشار." // Point added
     ],
     value: "item-7",
   },

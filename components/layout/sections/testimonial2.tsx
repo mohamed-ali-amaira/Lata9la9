@@ -120,7 +120,7 @@ const reviewList: ReviewProps[] = [
 
 const TestimonialSection2 = () => {
   return (
-    <section id="testimonials" className="container py-24 sm:py-32">
+    <section id="testimonial2" className="container py-24 sm:py-32">
       <div className="text-center">
         <h2
           dir="rtl"
@@ -132,53 +132,55 @@ const TestimonialSection2 = () => {
       </div>
       <br />
       <br />
-      <Carousel
-        opts={{
-          align: "end",
-          startIndex: window.innerWidth >= 720 ? 1 : 2,
-          loop: true,
-        }}
-        className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
-      >
-        <CarouselContent>
-          {reviewList.map((review) => (
-            <CarouselItem key={review.userName} className="md:basis-1/2 lg:basis-1/3">
-              <Card className="bg-muted/50 dark:bg-card">
-                <CardContent className="pt-6 pb-0">
-                  <div className="flex gap-1 pb-6">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="size-4 text-yellow-500" fill="currentColor" />
-                    ))}
-                  </div>
-                  <div dir={/[\u0600-\u06FF]/.test(review.comment) ? "rtl" : "ltr"} className="text-right">
-                    {review.comment}
-                  </div>
-                </CardContent>
-                <CardHeader>
-                  <div className="flex flex-row items-center gap-4">
-                    <Avatar>
-                      {review.avatar && (
-                        <AvatarImage src={review.avatar} alt="radix" />
-                      )}
-                      <AvatarFallback>{review.name ? review.name[0] : review.userName[0]}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                      <CardTitle className="text-lg">{review.name || review.userName}</CardTitle>
-                      <CardDescription>{review.userName}</CardDescription>
+      <div className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto">
+        <Carousel
+          opts={{
+            align: "end",
+            startIndex: window.innerWidth >= 720 ? 1 : 2,
+            loop: true,
+          }}
+          className="relative"
+        >
+          <CarouselPrevious className="absolute left-[-3rem] top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
+            <span className="material-icons">arrow_back</span>
+          </CarouselPrevious>
+          <CarouselNext className="absolute right-[-3rem] top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
+            <span className="material-icons">arrow_forward</span>
+          </CarouselNext>
+          <CarouselContent>
+            {reviewList.map((review) => (
+              <CarouselItem key={review.userName} className="md:basis-1/2 lg:basis-1/3">
+                <Card className="bg-muted/50 dark:bg-card">
+                  <CardContent className="pt-6 pb-0">
+                    <div className="flex gap-1 pb-6">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="size-4 text-yellow-500" fill="currentColor" />
+                      ))}
                     </div>
-                  </div>
-                </CardHeader>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-0 z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
-          <span className="material-icons">arrow_back</span>
-        </CarouselPrevious>
-        <CarouselNext className="absolute right-0 z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
-          <span className="material-icons">arrow_forward</span>
-        </CarouselNext>
-      </Carousel>
+                    <div dir={/[\u0600-\u06FF]/.test(review.comment) ? "rtl" : "ltr"} className="text-right">
+                      {review.comment}
+                    </div>
+                  </CardContent>
+                  <CardHeader>
+                    <div className="flex flex-row items-center gap-4">
+                      <Avatar>
+                        {review.avatar && (
+                          <AvatarImage src={review.avatar} alt="radix" />
+                        )}
+                        <AvatarFallback>{review.name ? review.name[0] : review.userName[0]}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col">
+                        <CardTitle className="text-lg">{review.name || review.userName}</CardTitle>
+                        <CardDescription>{review.userName}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
       <div className="w-full mt-2 flex items-center justify-center">
         <RegisterButton />
       </div>

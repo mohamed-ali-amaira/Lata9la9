@@ -18,7 +18,7 @@ export default function Merkanti() {
   };
 
   return (
-    <div className='w-full container flex flex-col items-center justify-center'>
+    <div id='merkanti' className='w-full container flex flex-col items-center justify-center'>
       <h2
           dir="rtl"
           className="text-4xl font-bold text-center mb-4"

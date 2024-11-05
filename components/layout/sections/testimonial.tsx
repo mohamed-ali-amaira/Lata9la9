@@ -23,7 +23,6 @@ const reviewList: ReviewProps[] = [
     image: "",
     comment: `تحرير العقود :\nنوفرولك كل انواع العقود سواء المهنية للـ freelancers او للبيع او الكراء او اتفاق طلاق او اي نوع من انواع الالتزام بين طرفين\nنوفرولك عقود خالية من اي ثغرة قانونية يمكن استغلالها فيما بعد, عقود تضمنلك حقك على المدى البعيد.`,
   },
-  
   {
     image: "",
     comment: `كتب اتفاق (قضايا الطلاق) :\nتحرير كتب اتفاق ومتابعة القضية بمختلف اجراءاتها ومراحلها\nباش نتاكدو الي الاجراءات تمشي بالسرعة الي تحب عليها انت.`,
@@ -34,7 +33,7 @@ const reviewList: ReviewProps[] = [
   },
   {
     image: "",
-    comment: `تحرير عريضة :\nنوفرولك عريضة تستجيب للمواصفات القانونية الكل بش تضمن بيها حقك\nنحررولك المطالب الي تستحقها الكل ونوريوك شنو تعمل بش ما يتجاهلك حد.`,
+    comment: `متابعة خاصة:\nبعد ما تكمل استشارتنا نرجعولك باش نتاكدو انه حقك مضمون.\nعندك الحق تعاود تسالنا.\nنوفرولك suivi ترجع تسالنا بلاش على نفس الموضوع في صورة صارو تطورات\nنوفرولك ملخص الاستشارة عند الطلب بش ما تنسى شي.`,
   },
   {
     image: "",
@@ -42,18 +41,16 @@ const reviewList: ReviewProps[] = [
   },
   {
     image: "",
-    comment: `متابعة خاصة:\nبعد ما تكمل استشارتنا نرجعولك باش نتاكدو انه حقك مضمون.\nعندك الحق تعاود تسالنا.\nنوفرولك suivi ترجع تسالنا بلاش على نفس الموضوع في صورة صارو تطورات\nنوفرولك ملخص الاستشارة عند الطلب بش ما تنسى شي.`,
+    comment: `تحرير عريضة :\nنوفرولك عريضة تستجيب للمواصفات القانونية الكل بش تضمن بيها حقك\nنحررولك المطالب الي تستحقها الكل ونوريوك شنو تعمل بش ما يتجاهلك حد.`,
   },
+
 ];
 
 const TestimonialSection = () => {
   return (
     <section id='testimonials' className='container py-24 sm:py-32'>
       <div className='text-center'>
-        <h2
-          dir='rtl'
-          className='text-4xl font-bold text-center mb-8'
-        >
+        <h2 dir='rtl' className='text-4xl font-bold text-center mb-8'>
           شنو نقدمولك؟
         </h2>
       </div>
@@ -100,10 +97,11 @@ const TestimonialSection = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-0 z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
+        {/* Adjust the arrow buttons to move outside the carousel cards */}
+        <CarouselPrevious className="absolute left-[-2rem] z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
           <span className="material-icons">arrow_back</span>
         </CarouselPrevious>
-        <CarouselNext className="absolute right-0 z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
+        <CarouselNext className="absolute right-[-2rem] z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
           <span className="material-icons">arrow_forward</span>
         </CarouselNext>
       </Carousel>

@@ -43,6 +43,7 @@ const HeroSection = () => {
 
   return (
     <section
+    id='hero'
       className="container w-full"
       style={{ marginBottom: width >= 720 ? -125 : "auto" }}
     >
