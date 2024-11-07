@@ -1,18 +1,13 @@
-// app/api/your-endpoint/route.ts
 import { NextResponse } from "next/server";
 import axios from "axios";
 import { createHash } from "crypto";
 
 // Type for the form submission request body
 interface FormSubmissionRequestBody {
-  name: string; // Added name to the request body
-  phone: string; // Added phone to the request body
-  email: string; // Email field should still be present
+  name: string; // Name field from the form
+  phone: string; // Phone field from the form
   adress: string; // Address field from the form
-  occupation: string; // Occupation field added
-  city?: string; // City can be optional
   referrer?: string; // Referrer can be optional
-  selectedOption: string; // Selected option from the form
 }
 
 // Hash function for email
@@ -57,15 +52,7 @@ async function sendConversionEvent(emailHash: string, value?: string) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const {
-      name,
-      phone,
-      email,
-      adress,
-      occupation,
-      selectedOption,
-      referrer,
-    }: FormSubmissionRequestBody = body; // Ensure to destructure based on the new type
+    const { name, phone, adress, referrer }: FormSubmissionRequestBody = body;
 
     // Make a request to your webhook or external API
     const req = await axios.post(
@@ -73,17 +60,13 @@ export async function POST(request: Request) {
       {
         name,
         phone,
-        email,
         adress,
-        job: occupation, // Map occupation correctly
-        // city, // Uncomment if you have city data to send
-        referral: referrer,
-        method: selectedOption,
+        referral: referrer, // Send referrer data if available
       }
     );
 
-    // Hash the email
-    const emailHash = hashEmail(email);
+    // Hash the email (assuming the email is part of the form in future versions)
+    const emailHash = hashEmail(phone); // Assuming phone is used as an identifier
 
     // Send conversion event to Facebook
     const result = await sendConversionEvent(emailHash, "197"); // Sending a fixed value of "197" for demonstration
