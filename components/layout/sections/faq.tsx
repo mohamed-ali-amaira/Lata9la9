@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { PhoneIcon } from "@heroicons/react/24/solid";
-
+import { FaWhatsapp } from "react-icons/fa";
 interface FAQProps {
   question: string;
   answer: string | string[];
@@ -138,10 +138,10 @@ export const FAQSection = () => {
           href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          className='flex items-center justify-center mt-2 text-5xl font-bold hover:text-blue-600 transition-colors duration-200'
+          className='flex items-center justify-center mt-2 text-5xl font-bold hover:text-green-600 transition-colors duration-200'
         >
           <span dir='ltr'>{phoneNumber}</span>
-          <PhoneIcon className='w-10 h-10 ml-2' />
+          <FaWhatsapp className='w-10 h-10 ml-2' />
         </a>
       </h2>
     </section>
