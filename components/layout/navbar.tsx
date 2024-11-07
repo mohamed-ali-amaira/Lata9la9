@@ -29,21 +29,22 @@ export default function Navbar() {
 
   return (
     <header className='shadow-inner w-full max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex flex-col md:flex-row items-center p-2 bg-white'>
-      
+
       {/* Button for larger screens only */}
       <div className='hidden md:flex justify-start w-3/12'>
         <Button
-          className='w-full md:w-2/4 font-bold group/arrow'
+          className="w-full md:w-2/4 font-bold group/arrow text-white bg-gradient-to-r from-[#f22b0a] to-primary hover:from-primary hover:to-[#f22b0a] transition-colors"
           onClick={scrollToContact}
         >
-          <ArrowLeft className='size-5 mr-2 group-hover/arrow:translate-x-1 transition-transform' />
-          <span style={{ color: '#FFFFFF' }}>استشرنا الان</span>
+          <ArrowLeft className="size-5 mr-2 group-hover/arrow:translate-x-1 transition-transform" />
+          <span>استشرنا الان</span>
         </Button>
+
       </div>
 
       <div className='flex-grow text-center'>
-        <button 
-          className="md:hidden" 
+        <button
+          className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {/* Hamburger Icon or similar can be used here */}
