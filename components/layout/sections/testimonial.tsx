@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -21,13 +22,8 @@ interface ReviewProps {
 const reviewList: ReviewProps[] = [
   {
     image: "",
-    comment: `تحرير العقود :\nنوفرولك كل انواع العقود سواء المهنية للـ freelancers او للبيع او الكراء او اتفاق طلاق او اي نوع من انواع الالتزام بين طرفين\nنوفرولك عقود خالية من اي ثغرة قانونية يمكن استغلالها فيما بعد, عقود تضمنلك حقك على المدى البعيد.`,
-  },
-  {
-    image: "",
     comment: `متابعة خاصة:\nبعد ما تكمل استشارتنا نرجعولك باش نتاكدو انه حقك مضمون.\nعندك الحق تعاود تسالنا.\nنوفرولك suivi ترجع تسالنا بلاش على نفس الموضوع في صورة صارو تطورات\nنوفرولك ملخص الاستشارة عند الطلب بش ما تنسى شي.`,
   },
-
   {
     image: "",
     comment: `استشارة عن بعد :\nبالهاتف وين انت.\nوقت الي يساعدك انت.\nتاخو وقتك في المكالمة قد ما تستحق.`,
@@ -38,17 +34,33 @@ const reviewList: ReviewProps[] = [
   },
   {
     image: "",
+    comment: `تحرير العقود :\nنوفرولك كل انواع العقود سواء المهنية للـ freelancers او للبيع او الكراء او اتفاق طلاق او اي نوع من انواع الالتزام بين طرفين\nنوفرولك عقود خالية من اي ثغرة قانونية يمكن استغلالها فيما بعد, عقود تضمنلك حقك على المدى البعيد.`,
+  },
+  {
+    image: "",
     comment: `كتب اتفاق (قضايا الطلاق) :\nتحرير كتب اتفاق ومتابعة القضية بمختلف اجراءاتها ومراحلها\nباش نتاكدو الي الاجراءات تمشي بالسرعة الي تحب عليها انت.`,
   },
-
   {
     image: "",
     comment: `تحرير عريضة :\nنوفرولك عريضة تستجيب للمواصفات القانونية الكل بش تضمن بيها حقك\nنحررولك المطالب الي تستحقها الكل ونوريوك شنو تعمل بش ما يتجاهلك حد.`,
   },
-
 ];
 
 const TestimonialSection = () => {
+  const [startIndex, setStartIndex] = useState(2); // Default to mobile center index
+
+  useEffect(() => {
+    const updateStartIndex = () => {
+      setStartIndex(window.innerWidth >= 720 ? 2 : 2); // Center the desired card in both views
+    };
+    updateStartIndex(); // Run on initial render
+    window.addEventListener("resize", updateStartIndex); // Adjust on resize
+
+    return () => {
+      window.removeEventListener("resize", updateStartIndex);
+    };
+  }, []);
+
   return (
     <section id='testimonials' className='container py-24 sm:py-32'>
       <div className='text-center'>
@@ -60,7 +72,7 @@ const TestimonialSection = () => {
       <Carousel
         opts={{
           align: "end",
-          startIndex: window.innerWidth >= 720 ? 1 : 2,
+          startIndex,
           loop: true,
         }}
         className='relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto mt-8'
@@ -99,7 +111,6 @@ const TestimonialSection = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        {/* Adjust the arrow buttons to move outside the carousel cards */}
         <CarouselPrevious className="absolute left-[-2rem] z-10 w-10 h-10 bg-gray-500 rounded-full text-white flex items-center justify-center">
           <span className="material-icons">arrow_back</span>
         </CarouselPrevious>
@@ -115,3 +126,4 @@ const TestimonialSection = () => {
 };
 
 export default TestimonialSection;
+
