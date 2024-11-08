@@ -51,6 +51,7 @@ export default function Navbar() {
         </button>
         {/* Logo and name for mobile */}
         <Link href='/' className='font-bold text-lg flex items-center'>
+        <span style={{ color: '#031833' }}>لا تقلق</span>
           <Image
             src='/images.png'
             alt='lata9la9'
@@ -58,7 +59,7 @@ export default function Navbar() {
             height={"34"}
             className='rounded-lg w-9 h-9 border'
           />
-          <span style={{ color: '#031833' }}>لا تقلق</span>
+          
         </Link>
       </div>
 
@@ -82,6 +83,7 @@ export default function Navbar() {
       </div>
       {/* Logo and name for desktop */}
       <Link href='/' className='hidden md:flex font-bold text-lg items-center mt-2 md:mt-0'>
+      <span style={{ color: '#031833' }}>لا تقلق</span>
         <Image
           src='/images.png'
           alt='lata9la9'
@@ -89,7 +91,7 @@ export default function Navbar() {
           height={"34"}
           className='rounded-lg w-9 h-9 mr-2 border'
         />
-        <span style={{ color: '#031833' }}>لا تقلق</span>
+        
       </Link>
     </header>
   );
