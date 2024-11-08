@@ -26,6 +26,7 @@ export default function Merkanti() {
         >
           بعض المعلومات الي تنجم تنفعك
         </h2>
+        <br/>
       <Slider {...settings} className='w-full max-w-sm'> {/* Adjust the max-width as needed */}
         <div>
           <InstagramEmbed url='https://www.instagram.com/reel/C2IPn_zIQjT/' width={328} />

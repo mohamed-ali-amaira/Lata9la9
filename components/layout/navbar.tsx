@@ -29,7 +29,6 @@ export default function Navbar() {
 
   return (
     <header className='shadow-inner w-full max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex flex-col md:flex-row items-center p-2 bg-white'>
-
       {/* Button for larger screens only */}
       <div className='hidden md:flex justify-start w-3/12'>
         <Button
@@ -39,18 +38,34 @@ export default function Navbar() {
           <ArrowLeft className="size-5 mr-2 group-hover/arrow:translate-x-1 transition-transform" />
           <span>استشرنا الان</span>
         </Button>
-
       </div>
 
-      <div className='flex-grow text-center'>
+      {/* Mobile menu icon and logo with name */}
+      <div className='flex items-center justify-between w-full md:hidden'>
+        {/* Mobile menu icon */}
         <button
-          className="md:hidden"
+          className="text-2xl"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {/* Hamburger Icon or similar can be used here */}
           {isMenuOpen ? "✖" : "☰"}
         </button>
+        {/* Logo and name for mobile */}
+        <Link href='/' className='font-bold text-lg flex items-center'>
+          <Image
+            src='/images.png'
+            alt='lata9la9'
+            width={"34"}
+            height={"34"}
+            className='rounded-lg w-9 h-9 border'
+          />
+          <span style={{ color: '#031833' }}>لا تقلق</span>
+        </Link>
+      </div>
 
+      
+
+      {/* Navigation Menu */}
+      <div className='flex-grow text-center'>
         {typeof window !== 'undefined' && !window.location.href.includes("thanks") && (
           <NavigationMenu className='relative mx-auto'>
             <ul className={`flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 ${isMenuOpen ? "block" : "hidden md:flex"}`}>
@@ -65,9 +80,8 @@ export default function Navbar() {
           </NavigationMenu>
         )}
       </div>
-
-      {/* Logo and text */}
-      <Link href='/' className='font-bold text-lg flex items-center mt-2 md:mt-0'>
+      {/* Logo and name for desktop */}
+      <Link href='/' className='hidden md:flex font-bold text-lg items-center mt-2 md:mt-0'>
         <Image
           src='/images.png'
           alt='lata9la9'
