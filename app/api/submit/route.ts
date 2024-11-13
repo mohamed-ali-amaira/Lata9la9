@@ -3,10 +3,10 @@ import axios from "axios";
 import { createHash } from "crypto";
 
 interface FormSubmissionRequestBody {
-  name: string; 
-  phone: string; 
-  adress: string; 
-  referrer?: string; 
+  name: string;
+  phone: string;
+  adress: string;
+  referrer?: string;
 }
 
 // Hash function for email
@@ -21,12 +21,12 @@ export async function POST(request: Request) {
 
     // Make a request to your webhook
     const req = await axios.post(
-      "https://n8n.lataklak.tn/webhook/09835f9a-8232-462f-b9d8-5246b00058cc",
+      "https://xposure-n8n.ciwin4.easypanel.host/webhook/80d2946a-3c54-4239-8e45-a263549cb42c",
       {
         name,
         phone,
         adress,
-        referral: referrer, 
+        referral: referrer,
       }
     );
 
