@@ -18,24 +18,38 @@ export default function Merkanti() {
   };
 
   return (
-    <div id='merkanti' className='w-full container flex flex-col items-center justify-center'>
+    <div
+      id='chokran'
+      className='w-full container flex flex-col items-center justify-center'
+    >
       <h2
-          dir="rtl"
-          className="text-4xl font-bold text-center mb-4"
-          style={{ color: "#031833" }} // Set the color to #031833
-        >
-          بعض المعلومات الي تنجم تنفعك
-        </h2>
-        <br/>
-      <Slider {...settings} className='w-full max-w-sm'> {/* Adjust the max-width as needed */}
+        dir='rtl'
+        className='text-4xl font-bold text-center mb-4'
+        style={{ color: "#031833" }} // Set the color to #031833
+      >
+        بعض المعلومات الي تنجم تنفعك
+      </h2>
+      <br />
+      <Slider {...settings} className='w-full max-w-sm'>
+        {" "}
+        {/* Adjust the max-width as needed */}
         <div>
-          <InstagramEmbed url='https://www.instagram.com/reel/C2IPn_zIQjT/' width={328} />
+          <InstagramEmbed
+            url='https://www.instagram.com/reel/C2IPn_zIQjT/'
+            width={328}
+          />
         </div>
         <div>
-          <InstagramEmbed url='https://www.instagram.com/reel/C3-wruYIrny/' width={328} />
+          <InstagramEmbed
+            url='https://www.instagram.com/reel/C3-wruYIrny/'
+            width={328}
+          />
         </div>
         <div>
-          <InstagramEmbed url='https://www.instagram.com/reel/C4TR0i1IkKw/' width={328} />
+          <InstagramEmbed
+            url='https://www.instagram.com/reel/C4TR0i1IkKw/'
+            width={328}
+          />
         </div>
       </Slider>
     </div>

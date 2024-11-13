@@ -22,7 +22,7 @@ export default function Navbar() {
   const sections = [
     { href: "#faq", label: "أسئلة ديما تطرحوها" },
     { href: "#testimonial2", label: "اراء حرفائنا" },
-    { href: "#merkanti", label: "معلومات تنجم تنفعك" },
+    { href: "#chokran", label: "معلومات تنجم تنفعك" },
     { href: "#testimonials", label: "شنو نقدمولك " },
     { href: "#hero", label: "الصفحة الرئيسية" },
   ];
@@ -32,10 +32,10 @@ export default function Navbar() {
       {/* Button for larger screens only */}
       <div className='hidden md:flex justify-start w-3/12'>
         <Button
-          className="w-full md:w-2/4 font-bold group/arrow text-white bg-gradient-to-r from-[#f22b0a] to-primary hover:from-primary hover:to-[#f22b0a] transition-colors"
+          className='w-full md:w-2/4 font-bold group/arrow text-white bg-gradient-to-r from-[#f22b0a] to-primary hover:from-primary hover:to-[#f22b0a] transition-colors'
           onClick={scrollToContact}
         >
-          <ArrowLeft className="size-5 mr-2 group-hover/arrow:translate-x-1 transition-transform" />
+          <ArrowLeft className='size-5 mr-2 group-hover/arrow:translate-x-1 transition-transform' />
           <span>استشرنا الان</span>
         </Button>
       </div>
@@ -43,15 +43,12 @@ export default function Navbar() {
       {/* Mobile menu icon and logo with name */}
       <div className='flex items-center justify-between w-full md:hidden'>
         {/* Mobile menu icon */}
-        <button
-          className="text-2xl"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
+        <button className='text-2xl' onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? "✖" : "☰"}
         </button>
         {/* Logo and name for mobile */}
         <Link href='/' className='font-bold text-lg flex items-center'>
-        <span style={{ color: '#031833' }}>لا تقلق</span>
+          <span style={{ color: "#031833" }}>لا تقلق</span>
           <Image
             src='/images.png'
             alt='lata9la9'
@@ -59,31 +56,39 @@ export default function Navbar() {
             height={"34"}
             className='rounded-lg w-9 h-9 border'
           />
-          
         </Link>
       </div>
 
-      
-
       {/* Navigation Menu */}
       <div className='flex-grow text-center'>
-        {typeof window !== 'undefined' && !window.location.href.includes("thanks") && (
-          <NavigationMenu className='relative mx-auto'>
-            <ul className={`flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 ${isMenuOpen ? "block" : "hidden md:flex"}`}>
-              {sections.map(({ href, label }) => (
-                <li key={href}>
-                  <a href={href} className='text-sm text-[#031833] hover:underline'>
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </NavigationMenu>
-        )}
+        {typeof window !== "undefined" &&
+          !window.location.href.includes("thanks") && (
+            <NavigationMenu className='relative mx-auto'>
+              <ul
+                className={`flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 ${
+                  isMenuOpen ? "block" : "hidden md:flex"
+                }`}
+              >
+                {sections.map(({ href, label }) => (
+                  <li key={href}>
+                    <a
+                      href={href}
+                      className='text-sm text-[#031833] hover:underline'
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </NavigationMenu>
+          )}
       </div>
       {/* Logo and name for desktop */}
-      <Link href='/' className='hidden md:flex font-bold text-lg items-center mt-2 md:mt-0'>
-      <span style={{ color: '#031833' }}>لا تقلق</span>
+      <Link
+        href='/'
+        className='hidden md:flex font-bold text-lg items-center mt-2 md:mt-0'
+      >
+        <span style={{ color: "#031833" }}>لا تقلق</span>
         <Image
           src='/images.png'
           alt='lata9la9'
@@ -91,7 +96,6 @@ export default function Navbar() {
           height={"34"}
           className='rounded-lg w-9 h-9 mr-2 border'
         />
-        
       </Link>
     </header>
   );
