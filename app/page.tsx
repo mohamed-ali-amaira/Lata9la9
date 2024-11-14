@@ -48,11 +48,11 @@ const FloatingButton = dynamic(() => import("@/components/ui/FloatingButton"), {
 });
 
 export const metadata = {
-  title: "lataklak",
+  title: "Lataklak",
   description: "Formation Sponsoring Facebook",
   openGraph: {
     type: "website",
-    title: "lataklak",
+    title: "Lataklak",
     description: "lataklak Tunisie",
     images: [
       {
@@ -71,7 +71,7 @@ export default function Home() {
       <HeroSection />
       <TestimonialSection />
       <Merkanti />
-      <TestimonialSection2 /> 
+      <TestimonialSection2 />
       <PricingSection />
       <ContactSection />
       <FAQSection />

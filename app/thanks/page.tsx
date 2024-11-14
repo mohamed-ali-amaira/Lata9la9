@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import RegisterButton from "@/components/ui/register";
 import { ArrowLeft } from "lucide-react";
@@ -11,27 +10,8 @@ export const metadata = {
 };
 
 const FinalPage = () => {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
-
-  const scrollToContact = () => {
-    const contactElement = document.getElementById("contact");
-    if (contactElement) {
-      window.scrollTo({
-        top: contactElement.offsetTop,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <section
-      className='container w-full'
-      style={{ marginBottom: width >= 720 ? -125 : "auto" }}
-    >
+    <section>
       <div className='grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-16 md:py-32'>
         <div className='text-center space-y-8'>
           <div className='max-w-screen-md mx-auto text-center text-3xl md:text-4xl font-bold'>
