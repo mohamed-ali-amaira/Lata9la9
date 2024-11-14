@@ -13,7 +13,7 @@ const Navbar = dynamic(() => import("@/components/layout/navbar"), {
 });
 
 export const metadata: Metadata = {
-  title: "Merkanti Sponsoring",
+  title: "Lataklak",
   description: "lataklak",
 };
 
